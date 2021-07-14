@@ -1,24 +1,63 @@
 # README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## items テーブル
 
-Things you may want to cover:
+| Column             | Type       | Options                        | 
+| ------------------ | ---------- | ------------------------------ |
+| item_name          | string     | null: false                    |
+| category           | string     | null: false                    |     
+| price              | string     | null: false                    |
+| user_id            | references | null: false, foreign_key: true |
 
-* Ruby version
+### Association
 
-* System dependencies
+- belongs_to :buyer
+- belongs_to :user
 
-* Configuration
+## users テーブル
 
-* Database creation
+| Column               | Type   | Options     |
+| -------------------- | ------ | ----------- |
+| nickname             | string | null: false |
+| email                | string | null: false |
+| encrypted_password   | string | null: false |
+| first_name           | string | null: false |
+| last_name            | string | null: false |
+| first_read           | string | null: false |
+| last_read            | string | null: false |
+| year                 | string | null: false |
+| month                | string | null: false |
+| date                 | string | null: false |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- has_many :items
+- has_many :buyers
 
-* Services (job queues, cache servers, search engines, etc.)
+## buyers テーブル
 
-* Deployment instructions
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user_id | references | null: false, foreign_key: true |
 
-* ...
+### Association
+
+- belongs_to :item
+- belongs_to :user
+- has_one :address
+
+## addresses テーブル
+
+| Column       | Type   | Options     |
+| ----------   | ------ | ----------- |
+| postal       | string | null: false |
+| prefectures  | string | null: false |
+| municipality | string | null: false |
+| address      | string | null: false |
+| building     | string |             |
+| phone        | string | null: false |
+
+### Association
+
+- has_one :buyer
