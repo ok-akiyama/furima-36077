@@ -9,6 +9,11 @@
 | category_id        | integer    | null: false                    |     
 | price              | string     | null: false                    |
 | user               | references | null: false, foreign_key: true |
+| status             | string     | null: false                    |
+| delivery           | string     | null: false                    |
+| description        | string     | null: false                    |
+| area               | string     | null: false                    |
+| ship               | string     | null: false                    |
 
 ### Association
 
@@ -26,7 +31,7 @@
 | last_name            | string | null: false               |
 | first_read           | string | null: false               |
 | last_read            | string | null: false               |
-| Date                 | string | null: false               |
+| birthday             | date   | null: false               |
 
 ### Association
 
