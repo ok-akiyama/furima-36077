@@ -6,10 +6,12 @@ class User < ApplicationRecord
 
   has_many :items
 
-  validates :nickname,   presence: true
-  validates :first_name, presence: true
-  validates :first_read, presence: true
-  validates :last_name,  presence: true
-  validates :last_read,  presence: true
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
+  validates :nickname,   presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :first_read, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+  validates :last_name,  presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :last_read,  presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :birthday,   presence: true
 end
