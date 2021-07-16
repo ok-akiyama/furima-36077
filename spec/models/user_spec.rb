@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
       it 'メールアドレスは、@を含む必要があること' do
         @user.email = 'abc'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'emailが空では登録できない' do
         @user.email = ''
@@ -49,7 +49,7 @@ RSpec.describe User, type: :model do
       it 'lars_nameが全角（漢字・ひらがな・カタカナ）以外では登録できない' do
         @user.last_name = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name is invalid")
+        expect(@user.errors.full_messages).to include('Last name is invalid')
       end
       it 'first_nameが空では登録できない' do
         @user.first_name = ''
@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
       it 'first_nameが全角（漢字・ひらがな・カタカナ）以外では登録できない' do
         @user.first_name = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name is invalid")
+        expect(@user.errors.full_messages).to include('First name is invalid')
       end
       it 'last_readが空だと登録できない' do
         @user.last_read = ''
@@ -69,7 +69,7 @@ RSpec.describe User, type: :model do
       it 'last_readが全角（カタカナ）以外では登録できない' do
         @user.last_read = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last read is invalid")
+        expect(@user.errors.full_messages).to include('Last read is invalid')
       end
       it 'first_readが空では登録できない' do
         @user.first_read = ''
@@ -79,7 +79,7 @@ RSpec.describe User, type: :model do
       it 'first_readが全角（漢字・ひらがな・カタカナ）以外では登録できない' do
         @user.first_read = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First read is invalid")
+        expect(@user.errors.full_messages).to include('First read is invalid')
       end
       it 'birthdayが空だと登録できない' do
         @user.birthday = ''
