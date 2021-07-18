@@ -7,7 +7,7 @@ FactoryBot.define do
     area_id         { 2 }
     ship_id         { 2 }
     price           { 888 }
-    description     { "2" }
+    description     { '2' }
     association :user
 
     after(:build) do |item|
