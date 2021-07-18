@@ -12,13 +12,18 @@ class Item < ApplicationRecord
     validates :name
     validates :image
     validates :description
-    validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :price, numericality: { greater_than_or_equal_to: 300 }
     validates :price, numericality: { less_than_or_equal_to: 9_999_999 }
     validates :user
-    validates :status_id, numericality: { other_than: 1, message: "can't be blank" }
-    validates :delivery_id, numericality: { other_than: 1, message: "can't be blank" }
-    validates :area_id, numericality: { other_than: 1, message: "can't be blank" }
-    validates :ship_id, numericality: { other_than: 1, message: "can't be blank" }
+    with_options numericality: { other_than: 1, message: "can't be blank" } do
+    validates :category_id
+    validates :status_id
+    validates :delivery_id
+    validates :area_id
+    validates :ship_id
+    end
   end
+
+  
+
 end
