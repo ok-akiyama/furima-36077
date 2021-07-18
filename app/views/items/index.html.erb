@@ -127,7 +127,7 @@
       新規投稿商品
     </div>
     <ul class='item-lists'>
-
+    <% if @item.blank? %>
      <% @items.each do |item| %>
       <li class='list'>
         <%= link_to items_path(item.id), method: :get do %>
@@ -153,6 +153,7 @@
             </div>
           </div>
         </div>
+        <% end %>
         <% end %>
       </li>
 
