@@ -24,6 +24,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
 
+      it '商品説明がない場合は保存できないこと' do
+        @item.description = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Description can't be blank")
+      end
+
       it 'ユーザーが紐付いていなければ投稿できない' do
         @item.user = nil
         @item.valid?
