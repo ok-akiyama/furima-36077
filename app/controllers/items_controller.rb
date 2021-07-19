@@ -28,8 +28,8 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.update(item_params)
-    if @item.save
+    @item = Item.find(params[:id])  
+    if @item.update(item_params) 
       redirect_to item_path
     else
       render :edit
@@ -48,9 +48,6 @@ class ItemsController < ApplicationController
   end
 
   def baria_user
-    unless Item.find(params[:id]).user.id.to_i == current_user.id
-        redirect_to root_path
-    end
-   end
-  
+    redirect_to root_path unless Item.find(params[:id]).user.id.to_i == current_user.id
+  end
 end
