@@ -61,7 +61,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Phone is invalid")
       end
       it 'phoneに英字が含まれていると保存できないこと' do
-        @order_address.phone = '090-88o8-8888'
+        @order_address.phone = '09088o88888'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone is invalid")
       end
