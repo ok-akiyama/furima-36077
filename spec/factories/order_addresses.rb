@@ -7,6 +7,5 @@ FactoryBot.define do
     building { '東京ハイツ' }
     phone { "08088888888" }
     token {"tok_0000000000000000000000000000"}
-    item_id { 2 }
   end
 end
