@@ -35,6 +35,11 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Area can't be blank")
       end
+      it 'area_idに--が選択されていると保存できないこと' do
+        @order_address.area_id = 1
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Area can't be blank")
+      end
       it 'municipalityが空だと保存できないこと' do
         @order_address.municipality = ''
         @order_address.valid?
@@ -44,6 +49,16 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.address = ''
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Address can't be blank")
+      end
+      it 'phoneが空だと保存できないこと' do
+        @order_address.phone = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone can't be blank")
+      end
+      it 'phoneにハイフンが含まれていると保存できないこと' do
+        @order_address.phone = '090-8888-8888'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone is invalid")
       end
       it 'tokenが空だと保存できないこと' do
         @order_address.token = ''
