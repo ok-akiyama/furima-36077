@@ -31,7 +31,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include('Postal is invalid. Include hyphen(-)')
       end
       it 'area_idを選択していないと保存できないこと' do
-        @order_address.area_id = ""
+        @order_address.area_id = ''
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Area can't be blank")
       end
@@ -58,22 +58,22 @@ RSpec.describe OrderAddress, type: :model do
       it 'phoneにハイフンが含まれていると保存できないこと' do
         @order_address.phone = '090-8888-8888'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone is invalid")
+        expect(@order_address.errors.full_messages).to include('Phone is invalid')
       end
       it 'phoneが全角数字だと保存できないこと' do
         @order_address.phone = '０９０８８８８８８８８'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone is invalid")
+        expect(@order_address.errors.full_messages).to include('Phone is invalid')
       end
       it 'phoneが12桁以上だと保存できないこと' do
         @order_address.phone = '090456789012'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone is invalid")
+        expect(@order_address.errors.full_messages).to include('Phone is invalid')
       end
       it 'phoneに英字が含まれていると保存できないこと' do
         @order_address.phone = '09088o88888'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone is invalid")
+        expect(@order_address.errors.full_messages).to include('Phone is invalid')
       end
       it 'tokenが空だと保存できないこと' do
         @order_address.token = ''
