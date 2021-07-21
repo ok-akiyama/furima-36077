@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :baria_user, only: [:edit, :destroy, :update]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
+  before_action :pres_item, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -52,4 +53,10 @@ class ItemsController < ApplicationController
   def baria_user
     redirect_to root_path unless Item.find(params[:id]).user.id.to_i == current_user.id
   end
+
+  def pres_item
+  if @item.order.present?
+    redirect_to root_path
+  end
+end
 end
