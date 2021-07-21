@@ -15,7 +15,7 @@ class OrderAddress
   end
 
   def save
-    @order = Order.create(user_id: user_id, item_id: item_id)
-    Address.create(postal: postal, area_id: area_id, municipality: municipality, address: address, building: building, phone: phone)
+    @order = Order.create(user_id: user_id, item_id: item_id, )
+    Address.create(postal: postal, area_id: area_id, municipality: municipality, address: address, building: building, phone: phone, @order)
   end
 end
