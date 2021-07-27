@@ -23,72 +23,72 @@ RSpec.describe OrderAddress, type: :model do
       it 'postalが空だと保存できないこと' do
         @order_address.postal = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal can't be blank")
+        expect(@order_address.errors.full_messages).to include("郵便番号を入力してください")
       end
       it 'postalが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @order_address.postal = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Postal is invalid. Include hyphen(-)')
+        expect(@order_address.errors.full_messages).to include('郵便番号ハイフン（ー）抜きで入力して下さい')
       end
       it 'area_idを選択していないと保存できないこと' do
         @order_address.area_id = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Area can't be blank")
+        expect(@order_address.errors.full_messages).to include("都道府県を入力してください")
       end
       it 'area_idに--が選択されていると保存できないこと' do
         @order_address.area_id = 1
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Area can't be blank")
+        expect(@order_address.errors.full_messages).to include("都道府県を選択して下さい")
       end
       it 'municipalityが空だと保存できないこと' do
         @order_address.municipality = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Municipality can't be blank")
+        expect(@order_address.errors.full_messages).to include("市区町村を入力してください")
       end
       it 'addressが空だと保存できないこと' do
         @order_address.address = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Address can't be blank")
+        expect(@order_address.errors.full_messages).to include("番地を入力してください")
       end
       it 'phoneが空だと保存できないこと' do
         @order_address.phone = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone can't be blank")
+        expect(@order_address.errors.full_messages).to include("電話番号を入力してください")
       end
       it 'phoneにハイフンが含まれていると保存できないこと' do
         @order_address.phone = '090-8888-8888'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Phone is invalid')
+        expect(@order_address.errors.full_messages).to include('電話番号を10桁以上11桁以下で入力して下さい')
       end
       it 'phoneが全角数字だと保存できないこと' do
         @order_address.phone = '０９０８８８８８８８８'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Phone is invalid')
+        expect(@order_address.errors.full_messages).to include('電話番号を10桁以上11桁以下で入力して下さい')
       end
       it 'phoneが12桁以上だと保存できないこと' do
         @order_address.phone = '090456789012'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Phone is invalid')
+        expect(@order_address.errors.full_messages).to include('電話番号を10桁以上11桁以下で入力して下さい')
       end
       it 'phoneに英字が含まれていると保存できないこと' do
         @order_address.phone = '09088o88888'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Phone is invalid')
+        expect(@order_address.errors.full_messages).to include('電話番号を10桁以上11桁以下で入力して下さい')
       end
       it 'tokenが空だと保存できないこと' do
         @order_address.token = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Token can't be blank")
+        expect(@order_address.errors.full_messages).to include("カード情報を入力してください")
       end
       it 'item_idが空だと保存できないこと' do
         @order_address.item_id = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Item can't be blank")
+        expect(@order_address.errors.full_messages).to include("Itemを入力してください")
       end
       it 'userが紐付いていないと保存できないこと' do
         @order_address.user_id = nil
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("User can't be blank")
+        expect(@order_address.errors.full_messages).to include("Userを入力してください")
       end
     end
   end
