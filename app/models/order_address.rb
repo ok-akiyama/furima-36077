@@ -8,9 +8,9 @@ class OrderAddress
     validates :municipality
     validates :address
     validates :token
-    validates :area_id, numericality: { other_than: 1, message: "can't be blank" }
-    validates :phone, format: { with: /\A\d{10,11}\z/, message: 'is invalid' }
-    validates :postal, format: { with: /\A\d{3}-\d{4}\z/, message: 'is invalid. Include hyphen(-)' }
+    validates :area_id, numericality: { other_than: 1, message: "を選択して下さい" }
+    validates :phone, format: { with: /\A\d{10,11}\z/, message: 'を10桁以上11桁以下で入力して下さい' }
+    validates :postal, format: { with: /\A\d{3}-\d{4}\z/, message: 'ハイフン（ー）抜きで入力して下さい' }
   end
 
   def save

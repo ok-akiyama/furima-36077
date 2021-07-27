@@ -1,0 +1,29 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        first_name: 名前
+        first_read: 名前のよみ
+        last_name: 苗字
+        last_read: 苗字のよみ
+        birthday: 誕生日
+      item:
+        name: 商品名
+        image: 画像
+        description: 商品の説明
+        price: 販売価格
+        category_id: カテゴリー
+        status_id: 商品の状態
+        delivery_id: 配送料の負担
+        area_id: 発送元の地域
+        ship_id: 発送までの日数
+  activemodel:
+    attributes:
+      order_address:
+        municipality: 市区町村
+        address: 番地
+        token: カード情報
+        area_id: 都道府県
+        phone: 電話番号
+        postal: 郵便番号
